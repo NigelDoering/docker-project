@@ -16,14 +16,14 @@ LABEL maintainer="UC San Diego ITS/ETS <ets-consult@ucsd.edu>"
 # 2) change to root to install packages
 USER root
 
-RUN  apt-get update \
-  && apt-get install -y wget \
-  && rm -rf /var/lib/apt/lists/*
+RUN  apt-get update
+RUN apt-get install wget
 
 # 3) install packages
 RUN pip install --no-cache-dir networkx scipy python-louvain
 RUN pip install --no-cache-dir pandas 
 RUN pip install --no-cache-dir twarc 
+RUN pip install --no-cache-dir wget 
 
 # 4) change back to notebook user
 COPY /run_jupyter.sh /
